@@ -5,10 +5,9 @@
 			"numberOfRuns": 3
 		},
 		"assert": {
-			"preset": "lighthouse:recommended",
 			"assertions": {
 				"categories:performance": [
-					"warn",
+					"error",
 					{
 						"minScore": 0.8
 					}
