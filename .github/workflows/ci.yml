@@ -27,17 +27,13 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run:
-          pnpm build
+        run: pnpm build
 
-          # --- 添加以下代码来安装和控制 Chrome 版本 ---
-      - name: Install specific Chrome version
-        uses: browser-actions/setup-chrome@v2
-        with:
-          chrome-version: 94.0.4606.122 # 替换为实际需要的 Chrome 版本
-
-      - name: Verify Chrome version
-        run: google-chrome --version
+      - name: Print puppeteer Chromium path & version
+        run: |
+          echo "puppeteer path: $(node -e "console.log(require('puppeteer').executablePath())")"
+          CHROME_PATH=$(node -e "console.log(require('puppeteer').executablePath())")
+          $CHROME_PATH --version || true
 
       - name: Lighthouse CI
         uses: treosh/lighthouse-ci-action@v11
