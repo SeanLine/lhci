@@ -27,7 +27,18 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm build
+        run:
+          pnpm build
+
+          # --- 添加以下代码来安装和控制 Chrome 版本 ---
+      - name: Install specific Chrome version
+        uses: browser-actions/setup-chrome@v1
+        with:
+          version: 94 # 替换为实际需要的 Chrome 版本
+          channel: 'stable' # 或 "beta", "dev"
+
+      - name: Verify Chrome version
+        run: google-chrome --version
 
       - name: Lighthouse CI
         uses: treosh/lighthouse-ci-action@v11
