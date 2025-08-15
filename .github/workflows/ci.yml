@@ -34,7 +34,7 @@ jobs:
       - name: Install specific Chrome version
         uses: browser-actions/setup-chrome@v2
         with:
-          chrome-version: 94 # 替换为实际需要的 Chrome 版本
+          chrome-version: 94.0.4606.122 # 替换为实际需要的 Chrome 版本
 
       - name: Verify Chrome version
         run: google-chrome --version
